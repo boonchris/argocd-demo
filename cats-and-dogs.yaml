@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-back
+  name: vote-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-back
+      app: azure-vote-backend
   template:
     metadata:
       labels:
-        app: azure-vote-back
+        app: vote-backend
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
-        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        image: VERVANG MET JE EIGEN ACR REPO URL:Versie
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
@@ -27,22 +27,22 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-back
+  name: vote-backend
 spec:
   ports:
   - port: 6379
   selector:
-    app: azure-vote-back
+    app: vote-backend
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-front
+  name: vote-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-front
+      app: vote-frontend
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -51,13 +51,13 @@ spec:
   template:
     metadata:
       labels:
-        app: azure-vote-front
+        app: vote-frontend
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: azure-vote-front
-        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+      - name: vote-frontend
+        image: VERVANG MET JE EIGEN ACR REPO URL:Versie
         ports:
         - containerPort: 80
         resources:
@@ -67,15 +67,15 @@ spec:
             cpu: 500m
         env:
         - name: REDIS
-          value: "azure-vote-back"
+          value: "vote-backend"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: vote-frontend
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: vote-frontend
