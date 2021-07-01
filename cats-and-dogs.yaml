@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-backend
+      app: vote-backend
   template:
     metadata:
       labels:
