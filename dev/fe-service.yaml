@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: vote-frontend
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
   selector:
     app: vote-frontend
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080

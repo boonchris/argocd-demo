@@ -23,7 +23,7 @@ spec:
       - name: vote-frontend
         image: mcr.microsoft.com/azuredocs/azure-vote-front:v2
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           requests:
             cpu: 250m

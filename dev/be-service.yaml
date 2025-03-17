@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: vote-backend
 spec:
-  ports:
-  - port: 6379
   selector:
     app: vote-backend
+  ports:
+  - port: 6379
