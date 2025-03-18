@@ -23,7 +23,7 @@ spec:
       - name: vote-frontend
         image: ghcr.io/boonchris/azure-vote-front:v1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
             cpu: 250m
