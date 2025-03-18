@@ -5,15 +5,6 @@ This repo is used to demonstrate how to deploy a simple application using [ArgoC
 ## Our goal
 To properly demonstrate the power of ArgoCD, this repo contains an example of an [App Of Apps Pattern](https://argo-cd.readthedocs.io/en/latest/operator-manual/cluster-bootstrapping/). The parent app (defined in argocd-applications.yaml) makes sure any child apps will be deployed by ArgoCD. 
 
-After deployment, the ArgoCD UI will show two applications: the parent and the child application. 
-![argocd-ui](images/argocd-ui.png)
-
-The parent application will look like this.
-![argocd-app-of-apps](images/argo-app-of-apps.png)
-
-The child application shows a more detailed view, as it contains 2 deployments and 2 services.
-![argocd-child-app](images/argo-child-app.png)
-
 ## Prerequisites 
 
 ### Kubernetes cluster
@@ -32,8 +23,17 @@ brew install kubernetes-cli
 brew install argocd
 ```
 
+It's also recommended to clone this repository so you can access it from your shell.
+```bash
+git clone https://github.com/boonchris/FailFastFeast-argocd.git
+```
+
 ## Deploying ArgoCD
-Clone this repository so you can access it from your shell.
+
+Make sure your fresh cluster is ready and the pods in the kube-system namespace are running.
+```bash
+kubectl get pods -A
+```
 
 Create a namespace and install ArgoCD in your cluster
 ```bash
@@ -57,13 +57,22 @@ kubectl get svc -n argocd
 kubectl port-forward -n argocd svc/argocd-server 8080:443
 ```
 
-Copy the forwarded address and open it in your browser. Skip the warning about the invalid certificate (we have not configured this) and advance to the ArgoCD UI. Use username ```admin``` the previously copied password. You will now be greeted with an empty User Interface.
+Copy the forwarded address and open it in your browser. Skip the warning about the invalid certificate (we have not configured this) and advance to the ArgoCD UI. Enter username ```admin``` and the previously copied password. You will now be greeted with an empty User Interface.
 
 It's now time to deploy our first application, which monitors this repository and deploys any applications defined within it. In your shell, navigate to the root of this repository and run.
 ```bash
 kubectl apply -f argocd-applications.yaml
 ```
-ArgoCD will now all applications defined in the argocd-applications directory. This includes the frontend and backend based on the manifests in the azure-vote-app directory of this repository. 
+ArgoCD will now all applications defined in the argocd-applications directory. This includes the frontend and backend based on the manifests in the azure-vote-app directory of this repository.
+
+After deployment, the ArgoCD UI will show two applications: the parent and the child application. 
+![argocd-ui](images/argocd-ui.png)
+
+The parent application will look like this.
+![argocd-app-of-apps](images/argo-app-of-apps.png)
+
+The child application shows a more detailed view, as it contains 2 deployments and 2 services.
+![argocd-child-app](images/argo-child-app.png)
 
 ## References
 
