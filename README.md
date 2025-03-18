@@ -40,12 +40,11 @@ kubectl port-forward -n argocd svc/argocd-server 8080:443
 
 Copy the forwarded address and open it in your browser. Skip the warning about the invalid certificate (we have not configured this) and advance to the ArgoCD UI. Use username ```admin``` the previously copied password. You will now be greeted with an empty User Interface.
 
-It's now time to deploy our first application. In your shell, navigate to the root of this repository and run.
+It's now time to deploy our first application, which monitors this repository and deploys any applications defined within it. In your shell, navigate to the root of this repository and run.
 ```bash
-kubectl apply -f application.yaml
+kubectl apply -f argocd-applications.yaml
 ```
-ArgoCD will now deploy the frontend and backend based on the manifests in the azure-vote-app directory of this repository. 
-
+ArgoCD will now all applications defined in the argocd-applications directory. This includes the frontend and backend based on the manifests in the azure-vote-app directory of this repository. 
 
 ## References
 Check [ArgoCD: Getting Started](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
