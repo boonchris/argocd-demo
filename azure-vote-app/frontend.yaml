@@ -32,3 +32,15 @@ spec:
         env:
         - name: REDIS
           value: "vote-backend"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote-frontend
+spec:
+  selector:
+    app: vote-frontend
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
