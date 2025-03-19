@@ -63,7 +63,9 @@ It's now time to deploy our first application, which monitors this repository an
 ```bash
 kubectl apply -f argocd-applications.yaml
 ```
-ArgoCD will now all applications defined in the argocd-applications directory. This includes the frontend and backend based on the manifests in the azure-vote-app directory of this repository.
+ArgoCD will now all applications defined in the argocd-applications directory. This includes:
+- The Azure Vote App (frontend and backend) based on the manifests in the azure-vote-app directory of this repository
+- Keycloak and its based on the keycloak.yaml Helm chart
 
 After deployment, the ArgoCD UI will show two applications: the parent and the child application. 
 ![argocd-ui](images/argocd-ui.png)
