@@ -13,17 +13,15 @@ spec:
     helm:
       values: |
         keycloak:
-          service:
-            type: LoadBalancer
           ingress:
             enabled: true
             ingressClassName: nginx
             hostname: keycloak.example
             path: /
   
-  destination:
+  destination:    
+    server: https://kubernetes.default.svc
     namespace: keycloak
-    server: 'https://kubernetes.default.svc'
 
   syncPolicy:
     syncOptions:
