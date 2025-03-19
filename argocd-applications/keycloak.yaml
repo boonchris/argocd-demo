@@ -11,7 +11,7 @@ spec:
     chart: keycloak
     targetRevision: 24.4.13
     helm:
-      values: |
+      valuesObject:
         ingress:
           enabled: true
           ingressClassName: nginx
