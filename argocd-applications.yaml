@@ -9,7 +9,7 @@ spec:
   source:
     path: argocd-applications
     repoURL: https://github.com/boonchris/FailFastFeast-argocd.git
-    targetRevision: HEAD
+    targetRevision: add-kc
   sources: []
 
 

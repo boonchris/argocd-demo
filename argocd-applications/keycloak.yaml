@@ -10,8 +10,17 @@ spec:
     repoURL: registry-1.docker.io/bitnamicharts
     chart: keycloak
     targetRevision: 24.4.13
-    # helm:
-    #   releaseName: my-keycloak
+    helm:
+      values: |
+        keycloak:
+          service:
+            type: LoadBalancer
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hostname: keycloak.example
+            path: /
+  
   destination:
     namespace: keycloak
     server: 'https://kubernetes.default.svc'
@@ -19,7 +28,6 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-
     automated:
       selfHeal: true
       prune: true
