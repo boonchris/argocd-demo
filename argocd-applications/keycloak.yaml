@@ -12,12 +12,11 @@ spec:
     targetRevision: 24.4.13
     helm:
       values: |
-        keycloak:
-          ingress:
-            enabled: true
-            ingressClassName: nginx
-            hostname: keycloak.example
-            path: /
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          hostname: keycloak.example
+          path: /
   
   destination:    
     server: https://kubernetes.default.svc
