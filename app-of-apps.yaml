@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1 # specify the Argocd API version
+kind: Application
+metadata:
+  name: argocd-applications
+  namespace: argocd
+spec:
+  project: default # the ArgoCD project this app belongs to. Out of scope for this demo.
+
+  source:
+    repoURL: https://github.com/boonchris/argocd-demo.git # URL of the repository ArgoCD will use as its source of truth
+    targetRevision: HEAD # The branch, tag, or commit hash ArgoCD will track
+    path: argocd-applications # The path within the repo that contains the app manifests
+  sources: []
+
+
+  destination:
+    name: ''
+    namespace: argocd # Target namespace the application will be deployed to
+    server: 'https://kubernetes.default.svc' # The Kubernetes API server ArgoCD will deploy to
+  
+  syncPolicy:
+    automated:
+      prune: true # Automatically remove resources not defined in Git
+      selfHeal: true # Automatically sync to match the desired Git state
+  revisionHistoryLimit: 0 # Specifies how many old application revisions should be kept
+
+operation:
+  initiatedBy:
+    username: admin # Indicates that the sync operation was triggered by the 'admin' user
+  sync:
+    syncStrategy:
+      hook: {} # Can be used for custom pre-sync or post-sync hooks

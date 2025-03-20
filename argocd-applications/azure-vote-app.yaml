@@ -7,9 +7,10 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/boonchris/FailFastFeast-argocd.git
+    repoURL: https://github.com/boonchris/argocd-demo.git
     targetRevision: HEAD
     path: azure-vote-app
+    
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
