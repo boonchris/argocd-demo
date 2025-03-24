@@ -59,7 +59,7 @@ Change the admin password User Info (Left-hand menu) > Update Password
 
 It's now time to look at our parent application (app-of-apps.yaml). This file instructs ArgoCD to monitor the argocd-applications directory in this repository and deploys any applications defined within it. I have added comments in the yaml to explain what is configured. 
 
-In your shell, navigate to the root of this repository and run.
+In your shell, navigate to the root of this repository and run:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/boonchris/argocd-demo/main/app-of-apps.yaml
 ```
@@ -67,6 +67,8 @@ kubectl apply -f https://raw.githubusercontent.com/boonchris/argocd-demo/main/ap
 ArgoCD will now deploy all applications defined in the argocd-applications directory. This includes:
 - The Azure Vote App (frontend and backend) based on the manifests in the azure-vote-app directory of this repository
 - Keycloak and its components based on the Helm chart deployed in keycloak.yaml.
+
+**Note:** If you manage your entire cluster using ArgoCD, this was probably the last time you needed to run kubectl apply on your cluster. 
 
 After deployment, the ArgoCD UI will show two applications: the parent and the child application. 
 ![argocd-ui](images/argocd-ui.png)
