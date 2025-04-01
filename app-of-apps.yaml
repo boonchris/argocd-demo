@@ -8,7 +8,8 @@ spec:
 
   source:
     repoURL: https://github.com/boonchris/argocd-demo.git # URL of the repository ArgoCD will use as its source of truth
-    targetRevision: HEAD # The branch, tag, or commit hash ArgoCD will track
+    targetRevision: helm
+    # targetRevision: HEAD # The branch, tag, or commit hash ArgoCD will track
     path: argocd-applications # The path within the repo that contains the app manifests
   sources: []
 

@@ -7,16 +7,12 @@ spec:
   project: default
 
   source:
-    repoURL: registry-1.docker.io/bitnamicharts
-    chart: keycloak
-    targetRevision: 24.4.13
-    helm: # ArgoCD allows to use valuesObject to pass values to the Helm chart (no values.yaml required)
-      valuesObject: # possible parameters: https://artifacthub.io/packages/helm/bitnami/keycloak#parameters
-        ingress:
-          enabled: true
-          ingressClassName: nginx
-          hostname: keycloak.example
-          path: /
+    repoURL: https://github.com/boonchris/argocd-demo.git
+    targetRevision: helm # HEAD
+    path: keycloak
+    helm:
+      valueFiles:
+      - values.yaml
   
   destination:    
     server: https://kubernetes.default.svc
