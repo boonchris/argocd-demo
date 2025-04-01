@@ -6,6 +6,6 @@ version: 0.1.0 # version of my own chart
 dependencies:
   - name: keycloak
     version: 24.4.13
-    repository: registry-1.docker.io/bitnamicharts    
+    repository: registry-1.docker.io/bitnamicharts
     tags:
       - keycloak
