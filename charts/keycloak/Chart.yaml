@@ -1,7 +1,7 @@
 apiVersion: v2
 name: keycloak
 type: application
-version: 0.1.0 # version of my own chart
+version: 0.1.1 # version of my own chart
 
 dependencies:
   - name: keycloak
