@@ -11,8 +11,15 @@ spec:
     targetRevision: HEAD
     path: keycloak
     helm:
-      valueFiles:
-      - values.yaml
+      valuesObject:
+        namespaceOverride: keycloak
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          hostname: keycloak.example
+          path: /
+      # valueFiles:
+      # - values.yaml
   
   destination:    
     server: https://kubernetes.default.svc

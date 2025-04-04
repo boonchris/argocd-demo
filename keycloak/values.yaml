@@ -4,5 +4,3 @@ ingress:
   ingressClassName: nginx
   hostname: keycloak.example
   path: /
-serviceAccount:
-  name: frits
