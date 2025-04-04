@@ -4,14 +4,14 @@ repos:
     hooks:
     - id: helmlint
 
-  - repo: "https://github.com/norwoodj/helm-docs"
-    rev: "v1.14.2"
-    hooks:
-      - id: "helm-docs"
-        args:
-          # Make the tool search for charts only under the `charts` directory
-          - "--chart-search-root=charts"
-          # - "--template-files=README.md.gotmpl" # optional template for generated Readme
+  # - repo: "https://github.com/norwoodj/helm-docs"
+  #   rev: "v1.14.2"
+  #   hooks:
+  #     - id: "helm-docs"
+  #       args:
+  #         # Make the tool search for charts only under the `charts` directory
+  #         - "--chart-search-root=keycloak"
+  #         # - "--template-files=README.md.gotmpl" # optional template for generated Readme
 
 # this hook needs to be refined, made generic and user-friendly
   # - repo: local
