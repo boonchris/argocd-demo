@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/boonchris/argocd-demo.git
-    targetRevision: helm # HEAD
+    targetRevision: HEAD
     path: keycloak
     helm:
       valueFiles:
