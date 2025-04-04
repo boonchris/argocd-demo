@@ -1,0 +1,11 @@
+apiVersion: v2
+name: keycloak
+type: application
+version: 0.1.0 # version of my own chart
+
+dependencies:
+  - name: keycloak
+    version: 24.4.13
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - keycloak

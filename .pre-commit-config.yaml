@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.28
+    hooks:
+    - id: helmlint
+
+  - repo: "https://github.com/norwoodj/helm-docs"
+    rev: "v1.14.2"
+    hooks:
+      - id: "helm-docs"
+        args:
+          # Make the tool search for charts only under the `charts` directory
+          - "--chart-search-root=charts"
+          # - "--template-files=README.md.gotmpl" # optional template for generated Readme
+
+# this hook needs to be refined, made generic and user-friendly
+  # - repo: local
+  #   hooks:
+  #     - id: helm-template
+  #       name: Helm Template Generator
+  #       entry: bash -c 'helm dependency build charts/keycloak && helm template my-release charts/keycloak --values charts/keycloak/values.yaml > charts/keycloak/manifests.yaml'
+  #       language: system
+  #       files: ^charts/keycloak/(Chart\.yaml|values\.yaml|templates/.*)$
+  #       # files: ^(Chart\.yaml|values\.yaml|templates/.*)$

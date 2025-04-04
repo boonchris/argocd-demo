@@ -66,7 +66,8 @@ kubectl apply -f https://raw.githubusercontent.com/boonchris/argocd-demo/main/ap
 
 ArgoCD will now deploy all applications defined in the argocd-applications directory. This includes:
 - The Azure Vote App (frontend and backend) based on the manifests in the azure-vote-app directory of this repository
-- Keycloak and its components based on the Helm chart deployed in keycloak.yaml.
+- Keycloak and its components based on the native Helm chart in the keycloak directory
+- Nginx Ingress Controller based on ArgoCD's declarative method of deploying Helm Charts in ingress-controller.yaml
 
 **Note:** If you manage your entire cluster using ArgoCD, this was probably the last time you needed to run kubectl apply on your cluster. 
 

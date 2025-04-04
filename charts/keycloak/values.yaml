@@ -1,0 +1,6 @@
+namespaceOverride: keycloak
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: keycloak.example
+  path: /
