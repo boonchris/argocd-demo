@@ -7,19 +7,12 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/boonchris/argocd-demo.git
-    targetRevision: HEAD
-    path: keycloak
+    repoURL: registry-1.docker.io/bitnamicharts
+    chart: keycloak
+    targetRevision: 24.4.13    
     helm:
-      # values: |
-      #   namespaceOverride: keycloak
-      #   ingress:
-      #     enabled: true
-      #     ingressClassName: nginx
-      #     hostname: keycloak.example
-      #     path: /
       valueFiles:
-      - values.yaml
+      - keycloak/values.yaml
   
   destination:    
     server: https://kubernetes.default.svc
